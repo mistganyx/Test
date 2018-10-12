@@ -22,7 +22,7 @@ import com.example.demo.mapper.StudentMapper;
 
 @Controller
 public class StudentController {
-	
+int studentid=1;
 	
 	@Autowired
    StudentMapper studentMapper;
@@ -49,6 +49,30 @@ public class StudentController {
 		int id1=Integer.valueOf(request.getParameter("id"));
 		studentMapper.delete(id1);
 		return new ModelAndView("redirect:/getStudent");
+	}
+	@RequestMapping(value="update")
+	public ModelAndView jump(HttpServletRequest request,HttpServletResponse response){
+		 studentid=Integer.valueOf(request.getParameter("id"));
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("tiaozhuan");
+	
+		return mv;
+	}
+	
+	@RequestMapping(value="updateStudent")
+	public ModelAndView updateStudent(HttpServletRequest request,HttpServletResponse response){
+		
+		Student student = new Student();
+		student.setId(studentid);
+		student.setName(request.getParameter("name"));
+		student.setName(request.getParameter("age"));
+		studentMapper.update(student);
+		
+		return new ModelAndView("redirect:/getStudent");
+		
+	
+	
 	}
 	
 

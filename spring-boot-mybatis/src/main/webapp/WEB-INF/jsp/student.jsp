@@ -20,7 +20,7 @@
          		<td>${st.age }</td>
          	   <td>${st.address.address }</td>
          	   <td>${st.grade.grade }</td>
-         	   <td><button href="delete">修改</button>
+         	   <td><a href="update?id=${st.id}">修改</a>
          	    <a href="${pageContext.request.contextPath} /delete?id=${st.id}">删除</a>
          	   </td>
          	</tr>

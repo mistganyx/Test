@@ -40,14 +40,14 @@ WHERE `id` = #{id} ;
       
        <update id="update"  parameterType="com.example.demo.bean.Student" >
        UPDATE 
-  `studnet` 
+  `student` 
 SET
-  `Student_id` = #{id},
-  `Student_name` = #{name},
-   `Class_id` =  #{gradeId},
-   `Address_id` = #{addressId},
-  `Student_age` = #{age} 
-WHERE `Student_id` = #{id} ;
+  `id` = #{id},
+  `name` = #{name},
+   `c_id` =  #{gradeId},
+   `AddressId` = #{addressId},
+  `age` = #{age} 
+WHERE `id` = #{id};
        </update>
       
       
