@@ -20,102 +20,98 @@ import com.example.demo.mapper.AddressMapper;
 import com.example.demo.mapper.GradeMapper;
 import com.example.demo.mapper.StudentMapper;
 
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Transactional
-@Rollback(false)
-public class SpringBootMybatisApplicationTests {
 
+public class SpringBootMybatisApplicationTests {
+	@Autowired
+	AddressMapper addressMapper;
+	
 	@Autowired
 	GradeMapper gradeMapper;
 	@Autowired
-	AddressMapper addressMapper;
-	@Autowired
 	StudentMapper studentMapper;
+	
 	@Test
 	public void contextLoads() {
-		//this.addGrade();
+		//this.addStudent();
 		//this.deleteGrade();
-		//this.updateGrade();
-		//this.selectGrade();
-		
-		//this.addAddress();
 		//this.deleteAddress();
-		//this.selectAddress();
+		//this.addGrade();
+		//this.updateGrade();
+		//this.addAddress();
 		//this.updateAddress();
-		
-		
+		//this.selectGrade();
+		//this.selectAddress();
 		//this.addStudent();
 		//this.deleteStudent();
 		//this.updateStudent();
 		//this.selectStudent();
-		
-		
 		//this.selectByMap();
-		this.deleteByAddressId();
+		//this.deleteByAddressId();
+		//this.deleteByAddress();
+
 	}
    void addGrade(){
 	   Grade grade = new Grade();
-	   grade.setId(7);
-	   grade.setName("2");
+	   grade.setId(3);
+	   grade.setGrade("三班");
 	   gradeMapper.add(grade);
    }
    void deleteGrade(){
-	  gradeMapper.delete(3);
+	   
+	   gradeMapper.delete(3);
+	   
    }
-   
    void updateGrade(){
 	   Grade grade = new Grade();
-	   grade.setId(1);
-	   grade.setName("3333");
+	   grade.setId(3);
+	   grade.setGrade("第三班");
 	   gradeMapper.update(grade);
    }
- 
    void selectGrade(){
-	   Grade grade =
+	   Grade grade=
 	   gradeMapper.select(1);
 	   System.out.println(grade);
+	   
    }
-   
-   
-   
-   
    void addAddress(){
 	   Address address = new Address();
-	   address.setId(7);
-	   address.setAddress("lala");
+	   address.setId(3);
+	   address.setAddress("广州");
 	   addressMapper.add(address);
    }
-   
    void deleteAddress(){
-		  addressMapper.delete(1);
-	   }
+	   addressMapper.delete(4);
+   }
    void updateAddress(){
 	   Address address = new Address();
-	   address.setId(3);
+	   address.setId(4);
 	   address.setAddress("昆山");
 	   addressMapper.update(address);
    }
    void selectAddress(){
-	   addressMapper.select(3);
+	   Address address=
+	   addressMapper.select(1);
+	   System.out.println(address);
    }
-   
-   
    void addStudent(){
 	   Student student = new Student();
-	   student.setId(7);
-	   student.setName("yyx");
+	   student.setId(4);
+	   student.setName("赵六");
 	   student.setAge(22);
-	   student.setAddressId(3);
-	   student.setGradeId(2);
+	   student.setAddressId(4);
+	   student.setGradeId(3);
 	   studentMapper.add(student);
    }
    void deleteStudent(){
 	   studentMapper.delete(4);
    }
+   
    void updateStudent(){
 	   Student student = new Student();
-	   student.setId(1);
+	   student.setId(4);
 	   student.setName("你好");
 	   student.setAge(22);
 	   student.setAddressId(4);
@@ -123,23 +119,32 @@ public class SpringBootMybatisApplicationTests {
 	   studentMapper.update(student);
    }
    void selectStudent(){
-	   Student stu =
+	   Student student=
 	   studentMapper.select(1);
-	   System.out.println(stu);
+	   System.out.println(student);
    }
    void selectByMap(){
-	   Map<String,Object>map =new HashMap<>();
-	   map.put("name", "cy");
-	   map.put("id", "1");
-	   Student s =studentMapper.selectstudentbymap(map);
+	   Map<String,Object> map=new HashMap<>();
+	   map.put("name","张三");
+	   map.put("id", 1);
+	   Student s =(Student) studentMapper.selectByNameAndId(map);
 	   System.out.println(s);
+			   
    }
    void deleteByAddressId(){
-	   Map<String,Object>map =new HashMap<>();
-	   List<Integer>list = new ArrayList<>();
-	   list.add(3);
-	   map.put("addressId", list);
-	   studentMapper.deleteByAddressId(map);
+	   Map<String,Object> map=new HashMap<>();
+	   List<Integer> list=new ArrayList<>();
+	    list.add(1);
+	    map.put("addressId", list);
+	  studentMapper.deleteByAddressId(map);
    }
-   
+   void deleteByAddress(){
+	   Map<String,Object> map=new HashMap<>();
+	   List<Integer> list=new ArrayList<>();
+	    list.add(6);
+	    map.put("addressId", list);
+	    addressMapper.deleteById(map);
+   }
+ 
 }
+

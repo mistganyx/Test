@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
  <!DOCTYPE mapper PUBLIC "-//mybatis.org//DT//DTD Mapper 3.0//EN"  "  http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     <mapper namespace="com.example.demo.mapper.AddressMapper">
-    <resultMap id="addressRM" type="com.example.demo.bean.Address">
+       <resultMap id="addressRM" type="com.example.demo.bean.Address">
         <id column="AddressId"  jdbcType="INTEGER" property="id"></id>
         <result column="address" jdbcType="VARCHAR" property="address"></result>
     </resultMap>
-    
+      
        <insert id="add" parameterType="com.example.demo.bean.Address"> 
-		INSERT INTO `address` (`addressId`, `address`) 
-         VALUES
-        (#{id},#{address}) 
+		INSERT INTO `address` (`Address_id`, `Address_name`) 
+VALUES
+  (#{id}, #{address}) ;
        </insert>
        
-     <delete id="delete" parameterType="int">
-    DELETE 
-FROM
+       <delete id="delete" parameterType="int">
+      DELETE 
+      FROM
   `address` 
-WHERE `addressId` = #{id};
-        </delete>
-        
-       
-    <update id="update" parameterType="com.example.demo.bean.Address">
+WHERE `Address_id` = #{id} ;
       
-      UPDATE 
-  `address` 
-SET
-  `addressId` = #{id},
-  `address` = #{address} 
-WHERE `addressId` = #{id} ;
-      </update> 
-      
-      
+       </delete>
+       <update id="update" parameterType="com.example.demo.bean.Address"> 
+       UPDATE 
+`address` 
+       SET
+  `Address_id` = #{id},
+  `Address_name` = #{address} 
+WHERE `Address_id` = #{id} ;
+       </update>
        <select id="select"  parameterType="int" resultMap="addressRM">
-       select * from `address` where AddressId = #{id}
-       </select>
+       select address from `address` where AddressId = #{id}
+       </select> 
        
-       
-		</mapper> 
+       <delete  id="deleteById" parameterType="Map">
+       DELETE 
+      FROM
+      `address`
+      where
+      Address_id in
+      <foreach item="d" collection="addressId" open="(" separator="," close=")">
+      #{d}
+      </foreach>
+       </delete>
+ </mapper> 

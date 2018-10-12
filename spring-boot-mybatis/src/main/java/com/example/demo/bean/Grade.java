@@ -3,20 +3,20 @@ package com.example.demo.bean;
 import java.util.List;
 
 public class Grade {
-	private int id;
-	private String name;
-	private List<Student> students;
-public int getId() {
+	   private String grade;
+	   private int id;
+	   private List<Student> students;
+   public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public List<Student> getStudents() {
 		return students;
@@ -25,22 +25,22 @@ public int getId() {
 		this.students = students;
 	}
 
-@Override
+   @Override
 public String toString() {
-	return "Grade [id=" + id + ", name=" + name + ", students=" + students + "]";
+	return "Grade [grade=" + grade + ", id=" + id + ", students=" + students + "]";
 }
-
-public Grade(int id, String name, List<Student> students) {
+	   public Grade(String grade, int id, List<Student> students) {
 	super();
+	this.grade = grade;
 	this.id = id;
-	this.name = name;
 	this.students = students;
 }
-
-public Grade() {
-	super();
-	// TODO Auto-generated constructor stub
-}
+			
+			   public Grade() {
+				super();
+				// TODO Auto-generated constructor stub
+			}
+			
 
 	
 }

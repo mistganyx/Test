@@ -8,12 +8,12 @@ import org.apache.ibatis.annotations.Mapper;
 import com.example.demo.bean.Student;
 @Mapper
 public interface StudentMapper {
-	public void add(Student student);
+	public Student add(Student student);
 	public void delete(int id);
 	public void update(Student student);
-	public Student select(int id);
-
-	public List<Student> findbyclassid(int id);
-	public Student selectstudentbymap(Map<String,Object>map);
-	public void deleteByAddressId(Map<String,Object>map);
+	public List<Student> selectByList();
+    public List<Student> selectByClass_id(int id);
+    public Student selectByNameAndId(Map<String,Object> map);
+    public void deleteByAddressId(Map<String,Object> map);
+    public Student select(int id);
 }

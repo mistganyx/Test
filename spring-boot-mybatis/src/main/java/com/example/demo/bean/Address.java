@@ -1,28 +1,9 @@
 package com.example.demo.bean;
 
-import java.util.List;
-
 public class Address {
-	private int id;
 	private String address;
-	private List<Student> students;
-	
-	public List<Student> getStudents() {
-		return students;
-	}
-	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
-	public Address() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Address(int id, String address) {
-		super();
-		this.id = id;
-		this.address = address;
-	}
-		public int getId() {
+	private int id;
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -40,10 +21,16 @@ public class Address {
 		return "Address [id=" + id + ", address=" + address + "]";
 	}
 	
+	public Address(String address, int id) {
+		super();
+		this.address = address;
+		this.id = id;
+	}
 	
-	
-	
-
+	public Address() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 
 }
