@@ -66,7 +66,7 @@ int studentid=1;
 		Student student = new Student();
 		student.setId(studentid);
 		student.setName(request.getParameter("name"));
-		student.setName(request.getParameter("age"));
+		student.setAge(Integer.parseInt(request.getParameter("age")));
 		studentMapper.update(student);
 		
 		return new ModelAndView("redirect:/getStudent");
